@@ -1,0 +1,39 @@
+{
+  "env": {
+    "AWS_ENDPOINT_URL": "http://localhost:4566",
+    "AWS_ACCESS_KEY_ID": "test",
+    "AWS_SECRET_ACCESS_KEY": "test",
+    "AWS_DEFAULT_REGION": "us-east-1",
+    "AWS_REGION": "us-east-1"
+  },
+  "permissions": {
+    "allow": [
+      "PowerShell(terraform version)",
+      "PowerShell(terraform fmt -check -recursive:*)",
+      "PowerShell(terraform validate:*)",
+      "PowerShell(terraform workspace show:*)",
+      "PowerShell(terraform workspace list:*)",
+      "PowerShell(docker compose -f ../../../floci/compose.yaml ps:*)",
+      "Bash(terraform fmt -check -recursive:*)",
+      "Bash(terraform validate:*)"
+    ],
+    "ask": [
+      "PowerShell(terraform apply:*)",
+      "Bash(terraform apply:*)",
+      "PowerShell(./apply-cascata.ps1:*)",
+      "PowerShell(.\\apply-cascata.ps1:*)"
+    ],
+    "deny": [
+      "PowerShell(terraform destroy:*)",
+      "Bash(terraform destroy:*)",
+      "PowerShell(terraform apply -auto-approve:*)",
+      "Bash(terraform apply -auto-approve:*)",
+      "PowerShell(terraform state rm:*)",
+      "Bash(terraform state rm:*)",
+      "PowerShell(terraform force-unlock:*)",
+      "Bash(terraform force-unlock:*)",
+      "PowerShell(git push --force:*)",
+      "Bash(git push --force:*)"
+    ]
+  }
+}
